@@ -1,0 +1,12 @@
+2022-03-23 14:32:38.3362 Info Message Template Auto Format enabled
+2022-03-23 14:32:38.3760 Info Loading assembly: NLog.Web.AspNetCore
+2022-03-23 14:32:38.3984 Info Adding target FileTarget(Name=allfile)
+2022-03-23 14:32:38.3990 Info Adding target FileTarget(Name=ownFile-web)
+2022-03-23 14:32:38.3990 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-03-23 14:32:38.4690 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=60, FilePath=/Users/sgr333/mvc6/MVC6/bin/Debug/net6.0/NLog.config
+2022-03-23 14:33:31.0687 Info Message Template Auto Format enabled
+2022-03-23 14:33:31.1082 Info Loading assembly: NLog.Web.AspNetCore
+2022-03-23 14:33:31.1303 Info Adding target FileTarget(Name=allfile)
+2022-03-23 14:33:31.1303 Info Adding target FileTarget(Name=ownFile-web)
+2022-03-23 14:33:31.1303 Info Adding target ConsoleTarget(Name=lifetimeConsole)
+2022-03-23 14:33:31.1904 Info Validating config: TargetNames=allfile, lifetimeConsole, ownFile-web, ConfigItems=60, FilePath=/Users/sgr333/mvc6/MVC6/bin/Debug/net6.0/NLog.config

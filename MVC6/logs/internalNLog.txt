@@ -1,0 +1,43 @@
+2022-09-26 17:35:23.1866 Info Message Template Auto Format enabled
+2022-09-26 17:35:23.3984 Info Loading assembly: NLog.Web.AspNetCore
+2022-09-26 17:35:23.4285 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error parsing layout aspnet-request-posted-body
+ ---> System.ArgumentException: LayoutRenderer symbol-name is unknown: 'aspnetrequestpostedbody'. Extension NLog.Web.AspNetCore not included?
+   at NLog.Config.Factory`2.CreateInstance(String itemName)
+   at NLog.Layouts.LayoutParser.GetLayoutRenderer(String typeName, ConfigurationItemFactory configurationItemFactory, Nullable`1 throwConfigExceptions)
+   --- End of inner exception stack trace ---
+2022-09-26 17:35:23.4404 Info Adding target FileTarget(Name=web)
+2022-09-26 17:35:23.5060 Info Validating config: TargetNames=web, ConfigItems=33, FilePath=/Users/sgr333/mvc6/MVC6/bin/Debug/net6.0/NLog.config
+2022-09-26 17:35:23.7387 Info Validating config: TargetNames=web, ConfigItems=33, FilePath=/Users/sgr333/mvc6/MVC6/bin/Debug/net6.0/NLog.config
+2022-09-26 17:35:23.9559 Info Shutdown() called. Logger closing...
+2022-09-26 17:35:23.9559 Info Closing old configuration.
+2022-09-26 17:35:23.9682 Info Logger has been closed down.
+2022-09-26 17:35:39.5103 Info Message Template Auto Format enabled
+2022-09-26 17:35:39.7205 Info Loading assembly: NLog.Web.AspNetCore
+2022-09-26 17:35:39.7503 Warn Error has been raised. Exception: NLog.NLogConfigurationException: Error parsing layout aspnet-request-posted-body
+ ---> System.ArgumentException: LayoutRenderer symbol-name is unknown: 'aspnetrequestpostedbody'. Extension NLog.Web.AspNetCore not included?
+   at NLog.Config.Factory`2.CreateInstance(String itemName)
+   at NLog.Layouts.LayoutParser.GetLayoutRenderer(String typeName, ConfigurationItemFactory configurationItemFactory, Nullable`1 throwConfigExceptions)
+   --- End of inner exception stack trace ---
+2022-09-26 17:35:39.7619 Info Adding target FileTarget(Name=web)
+2022-09-26 17:35:39.8113 Info Validating config: TargetNames=web, ConfigItems=33, FilePath=/Users/sgr333/mvc6/MVC6/bin/Debug/net6.0/NLog.config
+2022-09-26 17:35:39.9980 Info Validating config: TargetNames=web, ConfigItems=33, FilePath=/Users/sgr333/mvc6/MVC6/bin/Debug/net6.0/NLog.config
+2022-09-26 17:46:56.9728 Info Message Template Auto Format enabled
+2022-09-26 17:46:57.1849 Info Loading assembly: NLog.Web.AspNetCore
+2022-09-26 17:46:57.2130 Info Adding target FileTarget(Name=web)
+2022-09-26 17:46:57.2852 Info Validating config: TargetNames=web, ConfigItems=34, FilePath=/Users/sgr333/mvc6/MVC6/bin/Debug/net6.0/NLog.config
+2022-09-26 17:46:57.5035 Info Validating config: TargetNames=web, ConfigItems=34, FilePath=/Users/sgr333/mvc6/MVC6/bin/Debug/net6.0/NLog.config
+2022-09-26 17:47:23.5984 Info Message Template Auto Format enabled
+2022-09-26 17:47:23.8087 Info Loading assembly: NLog.Web.AspNetCore
+2022-09-26 17:47:23.8360 Info Adding target FileTarget(Name=web)
+2022-09-26 17:47:23.9106 Info Validating config: TargetNames=web, ConfigItems=34, FilePath=/Users/sgr333/mvc6/MVC6/bin/Debug/net6.0/NLog.config
+2022-09-26 17:47:24.1187 Info Validating config: TargetNames=web, ConfigItems=34, FilePath=/Users/sgr333/mvc6/MVC6/bin/Debug/net6.0/NLog.config
+2022-09-26 17:48:37.7003 Info Message Template Auto Format enabled
+2022-09-26 17:48:37.9100 Info Loading assembly: NLog.Web.AspNetCore
+2022-09-26 17:48:37.9376 Info Adding target FileTarget(Name=web)
+2022-09-26 17:48:38.0083 Info Validating config: TargetNames=web, ConfigItems=34, FilePath=/Users/sgr333/mvc6/MVC6/bin/Debug/net6.0/NLog.config
+2022-09-26 17:48:38.2174 Info Validating config: TargetNames=web, ConfigItems=34, FilePath=/Users/sgr333/mvc6/MVC6/bin/Debug/net6.0/NLog.config
+2022-09-26 17:49:03.4711 Info Message Template Auto Format enabled
+2022-09-26 17:49:03.6811 Info Loading assembly: NLog.Web.AspNetCore
+2022-09-26 17:49:03.7086 Info Adding target FileTarget(Name=web)
+2022-09-26 17:49:03.7871 Info Validating config: TargetNames=web, ConfigItems=34, FilePath=/Users/sgr333/mvc6/MVC6/bin/Debug/net6.0/NLog.config
+2022-09-26 17:49:03.9803 Info Validating config: TargetNames=web, ConfigItems=34, FilePath=/Users/sgr333/mvc6/MVC6/bin/Debug/net6.0/NLog.config

@@ -1,0 +1,45 @@
+﻿@model BoardDetails
+@using System.Security.Claims;
+@{
+    ViewData["Title"] = "Modify";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string userName = string.Empty;
+
+    if (Context.User.Claims.Any())
+    {
+        userName = User.FindFirst(claim => claim.Type.Equals(ClaimTypes.UserData)).Value;
+    }
+}
+<h1>@ViewData["Title"]</h1>
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <form method="post" asp-controller="Board">
+            <div class="form-group">
+                <input type="hidden" asp-for="No" value="@Model.No" />
+                <label>@Html.DisplayNameFor(b => b.Title)</label>
+                <input class="form-control" type="text" asp-for="Title" placeholder="Title" autofocus />
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="UserName" value="@userName" />
+                <input type="hidden" asp-for="UserID" value="@Context.User.Identity.Name" />
+                <label>@Html.DisplayNameFor(b => b.UserName)</label>
+                <label class="form-control">@userName</label>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Content</label>
+                <textarea class="form-control" rows="10" asp-for="Content" placeholder="Content"></textarea>
+            </div>
+            <br />
+            <div class="text-danger" asp-validation-summary="All"></div>
+            <button type="submit" name="btnRegist" class="btn btn-success btn-block" asp-action="Modify"
+                    asp-route-pageNo="@ViewBag.CurrentPage"
+                    asp-route-searchSubject="@ViewBag.SearchSubject"
+                    asp-route-keyWord="@ViewBag.KeyWord">Submit</button>
+            <input type="button" class="btn btn-success btn-block" onclick="location.href='@Url.Action("Details", "Board", new { no = Model.No , pageNo = ViewBag.CurrentPage, searchSubject = ViewBag.SearchSubject, keyWord = ViewBag.KeyWord })'" value="Back" />
+        </form>
+    </div>
+
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

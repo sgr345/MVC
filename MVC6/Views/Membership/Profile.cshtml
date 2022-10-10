@@ -1,0 +1,57 @@
+@model UserInfo
+@{
+    ViewData["Title"] = "UpdateInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+    <div class="text-info">@Html.Raw(TempData["Message"])</div>
+    <div class="jumbotron"></div>
+    <div class="col-lg">
+        <form method="post" asp-controller="Membership" onsubmit="btnUpdateInfo.disabled = true; return true;">
+            <div class="text-danger">@Html.Raw(ViewData["Message"])</div>
+            <table class="tbl_basic">
+                <tr class="form-group">
+                    <th style="width:10%">
+                        @Html.DisplayNameFor(m => m.UserID)
+                    </th>
+                    <td>
+                        <input type="hidden" asp-for="UserID" />
+                        <label>@Model.UserID</label>
+                    </td>
+                </tr>
+                <tr class="form-group">
+                    <th>
+                        @Html.DisplayNameFor(m => m.UserName)
+                    </th>
+                    <td>
+                        <input type="text" class="form-control" asp-for="UserName" placeholder="UserName" />
+                        <input type="hidden" asp-for="@Model.ChangeInfo.UserName" />
+                        <span class="text-danger" asp-validation-for="UserName"></span>
+                    </td>
+                </tr>
+                <tr class="form-group">
+                    <th>
+                        @Html.DisplayNameFor(m => m.UserEmail)
+                    </th>
+                    <td>
+                        <input type="text" class="form-control" asp-for="UserEmail" placeholder="UserEmail" />
+                        <input type="hidden" asp-for="@Model.ChangeInfo.UserEmail" />
+                        <span class="text-danger" asp-validation-for="UserEmail"></span>
+                    </td>
+                </tr>
+            </table>
+
+            <hr />
+            <div class="form-group">
+                @Html.DisplayNameFor(m => m.Password)
+                <input type="password" class="form-control" asp-for="Password" placeholder="Password" />
+                <span class="text-danger" asp-validation-for="Password"></span>
+            </div>
+            <hr />
+
+            <button type="submit" asp-action="Profile" name="btnUpdateInfo" class="btn btn-success">Membership Update</button>
+            <button type="submit" asp-action="Withdrawn" name="btnWithdrawn" class="btn btn-success">Withdrawn</button>
+        </form>
+    </div>
+</div>

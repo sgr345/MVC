@@ -1,0 +1,34 @@
+@model LoginInfo
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" asp-route-returnurl="@ViewData["ReturnUrl"]" asp-controller="Membership" asp-action="Login" onsubmit="btnLogin.disabled = true; return true;">
+            <div class="text-danger" asp-validation-summary="All"></div>
+            <div class="form-group">
+                @Html.DisplayNameFor(m => m.UserID)
+                <input type="text" name="userid" class="form-control" asp-for="UserID" placeholder="User ID" autofocus />
+                <span class="text-danger" asp-validation-for="UserID"></span>
+            </div>
+            <div class="form-group">
+                @Html.DisplayNameFor(m => m.Password)
+                <input type="password" class="form-control" asp-for="Password" placeholder="Password" />
+                <span class="text-danger" asp-validation-for="Password"></span>
+            </div>
+            <div class="checkbox">
+                <label asp-for="RememberMe">
+                    <input type="checkbox" asp-for="RememberMe" placeholder="Remember" />
+                    @Html.DisplayNameFor(m => m.RememberMe)
+                </label>
+                <span class="text-danger" asp-validation-for="RememberMe"></span>
+            </div>
+            <button type="submit" name="btnLogin" class="btn btn-success btn-block">Login</button>
+            <p style="padding-top:10px;"><a asp-route-returnurl="@ViewData["ReturnUrl"]" asp-controller="Membership" asp-action="Register" class="btn btn-primary btn-bloc">Register Member</a></p>
+        </form>
+    </div>
+</div>

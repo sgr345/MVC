@@ -1,0 +1,144 @@
+﻿@model BoardInfo
+@{
+    ViewData["Title"] = "BoardIndex";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    Func<string, string> function = (c) => Model != null && Model.PagingInfo.SearchSubject == c
+    ? "selected='selected'"
+    : string.Empty;
+    string test = string.Empty;
+
+}
+@section Styles{
+    <link href="~/utils/dataTables.bootstrap4.min.css" rel="stylesheet" />
+}
+@section Scripts{
+    <script src="~/utils/jquery.dataTables.min.js"></script>
+    <script src="~/utils/dataTables.bootstrap4.min.js"></script>
+    <script>$(document).ready(function () {
+            $('#hrList').DataTable({
+                "paging": false,
+                "searching": false,
+                "info": false,
+                "order": [[0, "desc"]]
+            });
+        });</script>
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="card shadow mb-4">
+    <div class="card-body">
+        <div class="table-responsive table-striped" style="overflow-x:hidden">
+            <div id="hrList_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <form method="get" asp-controller="Board" asp-action="Index" asp-route-pageNo="1" onsubmit="btnSearch.diable = true; return true;">
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered" id="hrList" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center bg-warning">
+                                            No
+                                        </th>
+                                        <th class="text-center bg-warning">
+                                            Title
+                                        </th>
+                                        <th class="text-center bg-warning">
+                                            Writer
+                                        </th>
+                                        <th class="text-center bg-warning">
+                                            CreatedAt
+                                        </th>
+                                        <th class="text-center bg-warning">
+                                            Readed
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        if (Model.boardList.Count != 0)
+                                        {
+
+                                            foreach (var item in Model.boardList)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <input type="hidden" asp-for="@item.No" value="@item.No" />
+                                                        <label>@item.No</label>
+                                                    </td>
+                                                    <td>
+                                                        <a href="@Url.Action("Details", "Board", new {
+                                                                no = item.No,
+                                                                pageNo = ViewBag.CurrentPage,
+                                                                searchSubject = Model.PagingInfo.SearchSubject,
+                                                                keyWord = Model.PagingInfo.SearchKeyword
+                                                            })">@item.Title</a>
+                                                    </td>
+                                                    <td>
+                                                        <lable>@item.UserName</lable>
+                                                    </td>
+                                                    <td>
+                                                        <label>@item.CreatedAt</label>
+                                                    </td>
+                                                    <td>
+                                                        <label>@item.ReadCount</label>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <tr>
+                                                <td colspan="7">Nothing</td>
+                                            </tr>
+                                        }
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th class="text-center bg-warning">
+                                            No
+                                        </th>
+                                        <th class="text-center bg-warning">
+                                            Title
+                                        </th>
+                                        <th class="text-center bg-warning">
+                                            Writer
+                                        </th>
+                                        <th class="text-center bg-warning">
+                                            CreatedAt
+                                        </th>
+                                        <th class="text-center bg-warning">
+                                            Readed
+                                        </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <div>
+                        <input style="float:right; margin:1% 0" type="button" class="btn btn-success btn-block" onclick="location.href='@Url.Action("Post", "Board")'" value="Create" />
+                        <div style="display:flex; justify-content:center; margin:1% 0">
+                            <ul class="pagination" page-model="@Model.PagingInfo"
+                                page-controller="Board" page-action="Index"
+                                page-classes-enabled="true"
+                                page-class="paginate_button page-item"
+                                page-a-class="page-link"
+                                page-class-normal=""
+                                page-class-selected="active">
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="display:flex; justify-content:center">
+                        @Html.DropDownList("searchSubject",
+                             (IEnumerable<SelectListItem>)ViewBag.comboList,
+                            new { @class = "form-select", style = "width:auto", id = "searchSubject", name = "searchSubject" })
+                        <input id="keyWord" name="keyWord" value="@Model.PagingInfo.SearchKeyword" class="input-group" style="width:20%" type="text" placeholder="Search Keyword" />
+                        <button id="btnSearch" type="submit" class="btn btn-primary">Search</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
