@@ -1,0 +1,101 @@
+﻿@using System.Security.Claims;
+@{
+    var routeUrl = Url.RouteUrl(ViewContext.RouteData.Values);
+    var qsPath = ViewContext.HttpContext.Request.QueryString.Value;
+    var returnUrl = $"{routeUrl}{qsPath}";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MVC6</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/MVC6.styles.css" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MVC6</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Data" asp-action="AES">AES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">SessionTest</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Board" asp-action="Index">Board</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav flex-grow-2">
+                        @if (Context.User.Identity.IsAuthenticated)
+                        {
+                            if (Context.User.IsInRole("SystemUser"))
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link text-dark dropdown-toggle" role="button" id="grantList" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Grant
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="grantList">
+                                        <li><a class="dropdown-item" asp-controller="Grant" asp-action="Index">Grant List</a></li>
+                                        <li><a class="dropdown-item" asp-controller="Grant" asp-action="Ajax">Grant Ajax List action</a></li>
+                                        <li><a class="dropdown-item" asp-controller="Grant" asp-action="List">Grant PagingList</a></li>
+                                    </ul>
+                                </li>
+                            }
+                            <li class="nav-item dropdown">
+                                <a class="nav-link text-dark dropdown-toggle" role="button" id="grantList" data-bs-toggle="dropdown" aria-expanded="false">
+                                    @User.FindFirst(claim => claim.Type.Equals(ClaimTypes.UserData)).Value
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="grantList">
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Membership" asp-action="Profile">Profile</a></li>
+                                    <li><a class="dropdown-item" asp-area="" asp-controller="Membership" asp-action="LogOut">LogOut</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Membership" asp-route-returnurl="@returnUrl" asp-action="Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Membership" asp-action="Register">Register</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="body" class="container" style="padding-bottom:10%">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - MVC6 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

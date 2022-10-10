@@ -1,0 +1,80 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Views\Membership\" />
+    <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
+    <None Remove="Models\ViewModels\" />
+    <None Remove="Models\DataModels\" />
+    <None Remove="Interface\" />
+    <None Remove="Controllers\Services\" />
+    <None Remove="Controllers\Interfaces\" />
+    <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
+    <None Remove="Microsoft.EntityFrameworkCore" />
+    <None Remove="Dapper" />
+    <None Remove="System.Data.SqlClient" />
+    <None Remove="Models\Providers\" />
+    <None Remove="Utility\" />
+    <None Remove="Microsoft.AspNetCore.DataProtection" />
+    <None Remove="Views\Data\" />
+    <None Remove="Microsoft.AspNetCore.Cryptography.KeyDerivation" />
+    <None Remove="Controllers\Bridges\" />
+    <None Remove="Extensions\" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="Properties\PublishProfiles\" />
+    <None Remove="Npgsql" />
+    <None Remove="NLog" />
+    <None Remove="NLog.Web.AspNetCore" />
+    <None Remove="Views\Cart\" />
+    <None Remove="Views\Board\" />
+    <None Remove="Content\" />
+    <None Remove="logs\.DS_Store" />
+    <None Remove="logs\internalNLog.txt" />
+    <None Remove="Microsoft.AspNetCore.Owin" />
+    <None Remove="Microsoft.AspNet.Identity.Owin" />
+    <None Remove="Microsoft.Owin.Host.SystemWeb" />
+    <None Remove="X.PagedList.Mvc.Core" />
+    <None Remove="X.PagedList.Web.Common" />
+    <None Remove="Views\Grant\" />
+    <None Remove="Swashbuckle.AspNetCore" />
+    <None Remove="Controllers\Api\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Membership\" />
+    <Folder Include="Models\ViewModels\" />
+    <Folder Include="Models\DataModels\" />
+    <Folder Include="Controllers\Services\" />
+    <Folder Include="Controllers\Interfaces\" />
+    <Folder Include="Models\Providers\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="Views\Data\" />
+    <Folder Include="Controllers\Bridges\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="Views\Cart\" />
+    <Folder Include="Views\Board\" />
+    <Folder Include="Content\" />
+    <Folder Include="Views\Grant\" />
+    <Folder Include="wwwroot\utils\" />
+    <Folder Include="Controllers\Api\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection" Version="6.0.9" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="6.0.9" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Npgsql" Version="6.0.7" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="5.1.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\css\Board.css" />
+    <Content Remove="wwwroot\util\" />
+  </ItemGroup>
+</Project>

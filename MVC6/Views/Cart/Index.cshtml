@@ -1,0 +1,24 @@
+@model List<ItemInfo>
+@{
+    ViewData["Title"] = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+<form id="frmItems" method="post" asp-controller="Cart" onsubmit="btnAdd.disabled = true; btnRemove.disabled = true; btnSave.disabled = true; return true;">
+    <ul>
+        @if (Model != null && Model.Count > 0)
+        {
+            foreach (var item in Model)
+            {
+                <li>ItemNo : @item.ItemNo, ItemName : @item.ItemName <button type="submit" class="btn btn-block btn-success" name="btnRemoveItem" asp-action="RemoveItem" asp-route-itemName="@item.ItemName">REMOVE</button></li>
+            }
+        }
+        else
+        {
+            <li class="text-info">@ViewData["Message"]</li>
+        }
+    </ul>
+    <button type="submit" name="btnAdd" asp-action="AddCart">AddItem</button>
+    <button type="submit" name="btnRemove" asp-action="RemoveCart">RemoveItem</button>
+</form>
